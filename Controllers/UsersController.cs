@@ -17,6 +17,20 @@ namespace  ProjectShifts.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> LoginUser(string documento, int tipoDocumento)
+        {
+            var user =await  _context.Usuarios.FirstOrDefaultAsync(u=>u.NumeroDocumento == documento);
+
+            if(user != null)
+            {
+                HttpContext.Session.SetInt32("UserId",user.Id);
+                return RedirectToAction("Categories", "Users");
+            }
+            else
+            {
+                return RedirectToAction("Index","Users");
+            }
+        }
 
         public IActionResult Categories()
         {

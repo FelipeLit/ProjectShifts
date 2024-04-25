@@ -11,6 +11,16 @@ builder.Services.AddDbContext<ProjectShiftsContext>(options =>
         builder.Configuration.GetConnectionString("mySqlConnection"),
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.2")));
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
 
 var app = builder.Build();
 
@@ -28,6 +38,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
