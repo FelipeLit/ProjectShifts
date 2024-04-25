@@ -41,6 +41,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Landing}/{action=Index}");
+    pattern: "{controller=Users}/{action=Index}");
 
 app.Run();

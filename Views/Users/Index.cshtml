@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Inicio usuarios";
 }
-
+@* 
 <div class="container">
     <form asp-action="LoginUser" asp-controller="Users" method="post">
         <div class="row">
@@ -36,4 +36,32 @@
             </div>
         </div>
     </form>
-</div>
+</div> *@
+
+<body class="bodyLa">
+    <div class="d-flex flex-column mt-5 align-items-center">
+        <h1 class="mt-5 h1L">𝓛𝓪 𝓜𝓲𝓼𝓮𝓻𝓲𝓬𝓸𝓻𝓭𝓲𝓪</h1>
+        <div class="CardLan d-flex flex-column mt-5 align-items-center">
+            <h3 class="form-login mt-5">Ingrese su numero de indentificación</h3>
+            <form asp-action="LoginUser" asp-controller="Users" method="post" class="d-flex flex-column align-items-center">
+                <div class="mt-5">
+                    <select class="form-select" name="tipoDocumento">
+                        <option selected disabled>Tipo de documento</option>
+                        <option value="1">TI</option>
+                        <option value="2">CC</option>
+                    </select>
+                </div>
+                <div class="input-box ">
+                    <input type="text" class="form-control" id="" name="documento" placeholder="Numero documento">
+                </div>
+                <div>
+                    <button class="btnLa" type="submit">Continuar</button>
+                </div>
+            </form>
+        </div><br><br>
+        <div display: flex; justify-content: center; align-items: center; height: 100%;>
+            <a class="btnLa2 mt-5" asp-action="Index" asp-controller="Admin">Continuar como Administrador</a>
+        </div>
+    </div>
+    <br>
+</body>

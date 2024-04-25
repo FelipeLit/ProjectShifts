@@ -82,13 +82,6 @@
 }
 
 /* LOGIN ADMIN */
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
 
 /* Card */
 .CardLog {
@@ -123,7 +116,7 @@
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.753);
+  box-shadow: 0 0 10px rgb(255, 255, 255);
   border-radius: 40px;
   font-size: 16px;
   color: #fff;
@@ -141,7 +134,7 @@
   border: none;
   outline: none;
   border-radius: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ box-shadow: 0 0 10px rgb(255, 255, 255);
   cursor: pointer;
   font-size: 16px;
   color: #333;
@@ -161,3 +154,104 @@
   font-size: 80px;
   color: #fff;
 }
+
+/* Landing */ 
+
+.CardLan {
+  width: 820px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg,
+      rgba(2, 0, 36, 0.514) 9%,
+      rgba(9, 9, 121, 0.418) 68%,
+      rgba(0, 89, 255, 0.432) 97%);
+  backdrop-filter: blur(9px);
+  color: #fff;
+  border-radius: 12px;
+  padding: 30px 40px;
+}
+
+.form-login {
+  font-size: 36px;
+  text-align: center;
+}
+
+.CardLan .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+
+  margin: 30px 0;
+}
+
+.input-box input {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.753);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+}
+
+.CardLan .btnLa {
+  width: 340px;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  margin-left: auto;
+  margin-top: 10px;
+  color: rgb(0, 119, 255);
+}
+
+.bodyLa {
+  background-image: url(https://www.clarin.com/2022/11/21/CfwaLHeeg_720x0__1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.h1La {
+  font-size: 80px;
+  color: #fff;
+}
+
+.btnLa2 {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 48px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgb(0, 68, 255);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  color: rgb(0, 119, 255);
+}
+
+
+.form-select{
+  color: rgb(0, 119, 255);
+  font-weight: 600;
+  text-align: center;
+  width: 344px;
+  height: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+/* link imagen para fondo general: https://i.pinimg.com/736x/b0/5a/ef/b05aefde6fa8ab101da73492138959ed.jpg */
+  
