@@ -3,18 +3,17 @@
 }
 
 <div class="container">
-    <form action="">
+    <form asp-action="LoginUser" asp-controller="Users" method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <div>
                         <label for="nombre">Seleccione tipo documento</label>
                     </div>
-                    <select name="" id="" class="form-select">
+                    <select name="" id="" class="form-select" name="tipoDocumento">
                         <option value="" disabled selected>Seleccione una opción</option>
-                        <option value="">Cedula</option>
-                        <option value="">Tarjeta identidad</option>
-                        <option value="">Pasaporte</option>
+                        <option value="1">Cedula</option>
+                        <option value="2">Tarjeta identidad</option>
                     </select>
                 </div>
             </div>
@@ -24,7 +23,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="nombre">Digite su documento de identidad</label>
-                    <input type="text" class="form-control" id="" name="id" placeholder="Numero documento">
+                    <input type="text" class="form-control" id="" name="documento" placeholder="Numero documento">
                 </div>
             </div>
         </div>
