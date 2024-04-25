@@ -68,7 +68,7 @@ namespace  ProjectShifts.Controllers
             var id = HttpContext.Session.GetInt32("UserId");
             var NumeroTurno = turno;
 
-            if (usuario != null)
+            if (id != null)
             {
                 var saveTurno = new Turnos
                 {
