@@ -18,11 +18,29 @@ namespace  ProjectShifts.Controllers
             return View();
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
-            return View();
+            return View(await _context.Turnos.ToListAsync());
         }
 
-    }
+        public async Task<IActionResult> Attend(int id)
+        {
+            var shift = await _context.Turnos.FindAsync(id);
 
+            shift.FechaAtencion = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Dashboard");
+        }
+
+        public async Task<IActionResult> Finish(int id)
+        {
+            var shift = await _context.Turnos.FindAsync(id);
+
+            shift.FechaFin = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Dashboard");
+        }
+    }
 }

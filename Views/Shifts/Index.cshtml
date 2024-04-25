@@ -1,41 +1,59 @@
 @{
-    ViewBag.Title = "Turnos";
+    ViewBag.Title = "Dashboard Admin";
 }
 
 <div class="content-center">
-    <h1>Atención</h1>
-    
-    <div class="content">
-        <div class="content-shift">
-            <div class="shift-titles">
-                <div class="title">
-                    <h1>Turno</h1>
-                </div>
-
-                <div class="title">
-                    <h1>Módulo</h1>
-                </div>
-            </div>
-
-            <div class="info-shift">
-                @foreach (var shift in Model)
-                {   
-                    <div class="shift">
-                        <div class="item item-code">
-                            <h2>@shift.CodigoTurno</h2>
-                        </div>
-
-                        <div class="item item-module">
-                            <h2>@{
-                                    int numRandom = new Random().Next(1, 8);
-                                }
-                                @numRandom
-                            </h2>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-
+    <div class="title">
+        <h1>Turnos en Cola</h1>
     </div>
+
+    <table class="table table-striped container text-center">
+        <thead>
+            <tr>
+                <th>Turno</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shift in Model)
+            {
+                if (shift.FechaAtencion == null)
+                {
+                    <tr>
+                        <td>@shift.CodigoTurno</td>
+                        <td>
+                            <a class="btn btn-sm btn-success" asp-action="Attend" asp-route-id="@shift.Id">Atender</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <div class="title mt-5">
+        <h1>Turnos Atendidos</h1>
+    </div>
+
+    <table class="table table-striped container text-center">
+        <thead>
+            <tr>
+                <th>Turno</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var shift in Model)
+            {
+                if (shift.FechaAtencion != null && shift.FechaFin == null)
+                {
+                    <tr>
+                        <td>@shift.CodigoTurno</td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" asp-action="Finish" asp-route-id="@shift.Id" >Finalizar</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
