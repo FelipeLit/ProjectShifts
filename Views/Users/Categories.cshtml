@@ -1,19 +1,19 @@
 @{
     ViewData["title"]= "Seleccione turno";
 }
-
 <div class="container">
     <div class="row">
 
         <div class="col-md-6">
             <form action="">
-                <a class="btn btn-primary">Turno medicamento</a>
+                    <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="ME" asp-route-id="1">Turno medicamento</a>
+                
             </form>
         </div>
 
         <div class="col-md-6">
              <form action="">
-                <a class="btn btn-primary">Turno citas</a>
+                <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="CM" asp-route-id="2">Turno cita medica</a>
             </form>
         </div>
     </div>
@@ -22,13 +22,13 @@
 
         <div class="col-md-6">
             <form action="">
-                <a class="btn btn-primary">Turno consulta general</a>
+                <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="CG" asp-route-id="3">Turno consulta general</a>
             </form>
         </div>
 
         <div class="col-md-6">
              <form action="">
-                <a class="btn btn-primary">Turno pago facturas</a>
+                <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="PF" asp-route-id="4">Turno pago facturas</a>
             </form>
         </div>
     </div>
