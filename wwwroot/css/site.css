@@ -1,23 +1,82 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+/* LOGIN ADMIN */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
+/* Card */
+.CardLog {
+  width: 420px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg,
+      rgba(2, 0, 36, 0.514) 9%,
+      rgba(9, 9, 121, 0.418) 68%,
+      rgba(0, 89, 255, 0.432) 97%);
+  backdrop-filter: blur(9px);
+  color: #fff;
+  border-radius: 12px;
+  padding: 30px 40px;
+}
+
+.form-login {
+  font-size: 36px;
+  text-align: center;
+}
+
+.CardLog .input-box {
   position: relative;
-  min-height: 100%;
+  width: 100%;
+  height: 50px;
+
+  margin: 30px 0;
 }
 
-body {
-  margin-bottom: 60px;
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.753);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
 }
 
+.input-box input::placeholder {
+  color: #fff;
+}
+
+.CardLog .btnL {
+  width: 150px;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  margin-left: auto;
+  margin-top: 10px;
+  color: rgb(0, 119, 255);
+}
+
+.bodyL {
+  background-image: url(https://www.clarin.com/2022/11/21/CfwaLHeeg_720x0__1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.h1L {
+  font-size: 80px;
+  color: #fff;
+}
+
+/*                                 */
