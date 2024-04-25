@@ -1,0 +1,39 @@
+@{
+    ViewBag.Title = "Turnos";
+}
+
+<div class="content-center">
+    <div class="content">
+        <div class="content-shift">
+            <div class="shift-titles">
+                <div class="title">
+                    <h1>Turno</h1>
+                </div>
+
+                <div class="title">
+                    <h1>Módulo</h1>
+                </div>
+            </div>
+
+            <div class="info-shift">
+                @foreach (var shift in Model)
+                {   
+                    <div class="shift">
+                        <div class="item item-code">
+                            <h2>@shift.CodigoTurno</h2>
+                        </div>
+
+                        <div class="item item-module">
+                            <h2>@{
+                                    int numRandom = new Random().Next(1, 8);
+                                }
+                                @numRandom
+                            </h2>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
