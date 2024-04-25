@@ -68,10 +68,11 @@
 
 .item{
   display: flex;
+  padding: 0px 10px;
   justify-content: center;
   border: 2px solid #000;
   border-radius: 20px;
-  width: 120px;
+  width: 150px;
   
   h2 {
     line-height: 1;

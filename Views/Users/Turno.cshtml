@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+                
+                @ViewBag.Ficho
+
+    </div> 
+
+    <div class="row">
+         <a asp-controller="Users"  asp-action="TomarTurno" asp-route-turno="@ViewBag.Ficho"  class="btn btn-lg btn-primary">Tomar turno</a>
+    </div>
+</div>
