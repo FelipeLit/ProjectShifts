@@ -1,6 +1,6 @@
 ## Project Shifts
 
-### Proyecto para el hospital "La Misericordia" con el objetivo de mejorar la eficiencia en la asignación de turnos de citas médicas, pago de facturas, autorización de medicamentos e Información general
+Proyecto para el hospital "La Misericordia" con el objetivo de mejorar la eficiencia en la asignación de turnos de citas médicas, pago de facturas, autorización de medicamentos e Información general
 
 <br/>
 
