@@ -1,11 +1,22 @@
-<div class="container">
-    <div class="row">
-                
-                @ViewBag.Ficho
+<header class="header1 d-flex justify-content-center">
+    <h1 class="text-light hTurn mt-5">𝓛𝓪 𝓜𝓲𝓼𝓮𝓻𝓲𝓬𝓸𝓻𝓭𝓲𝓪</h1>
+</header>
 
-    </div> 
+<body class="bodyTurn">
+    <div class="mt-5">
+        <div class="d-grid gap-2 ">
+            <div class="container d-flex justify-content-center mt-5">
+                <div class="hTurn container justify-content-center mt-5">
+                    <div class="d-flex justify-content-center mt-5">
+                        @ViewBag.Ficho
+                    </div>
 
-    <div class="row">
-         <a asp-controller="Users"  asp-action="TomarTurno" asp-route-turno="@ViewBag.Ficho"  class="btn btn-lg btn-primary">Tomar turno</a>
+                    <div class="row">
+                        <a asp-controller="Users" asp-action="TomarTurno" asp-route-turno="@ViewBag.Ficho"
+                            class="buttonTurn justify-content-center"><span>Tomar Turno</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</body>
