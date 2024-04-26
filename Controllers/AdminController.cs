@@ -26,8 +26,10 @@ namespace  ProjectShifts.Controllers
         public async Task<IActionResult> Attend(int id)
         {
             var shift = await _context.Turnos.FindAsync(id);
+            var adminId = HttpContext.Session.GetInt32("UserId");
 
             shift.FechaAtencion = DateTime.Now;
+            shift.IdAdministrador = adminId;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Dashboard");
@@ -61,7 +63,13 @@ namespace  ProjectShifts.Controllers
                 TempData["errorMessage"] = "Correo electrónico o contraseña incorrectos";
                 return RedirectToAction("Index", "Admin");
             }
+        }
 
+        public IActionResult SignOut()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Index", "Users");
         }
     }
 }

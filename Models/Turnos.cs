@@ -8,7 +8,7 @@ namespace ProjectShifts.Models
         public DateTime? FechaAtencion { get; set; }
         public DateTime? FechaFin { get; set; }
         public int IdTipoTurno { get; set; }
-        public  int IdUsuario { get; set; }
-        public  int? IdAdministrador { get; set; }
+        public int IdUsuario { get; set; }
+        public int? IdAdministrador { get; set; }
     }
 }

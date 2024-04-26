@@ -2,6 +2,11 @@
     ViewBag.Title = "Dashboard Admin";
 }
 
+<div class="menu">
+    <a class="btn btn-danger" asp-action="SignOut">Cerrar Sesión</a>
+    <a class="btn btn-dark" target="_blank" asp-controller="Shifts" asp-action="Index">Vista de la Pantalla</a>
+</div>
+
 <div class="content-center">
     <div class="title">
         <h1>Turnos en Cola</h1>
