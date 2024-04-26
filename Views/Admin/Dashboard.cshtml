@@ -27,7 +27,7 @@
                     <tr>
                         <td>@shift.CodigoTurno</td>
                         <td>
-                            <a class="btn btn-sm btn-success" id="btnAttend" asp-action="Attend" asp-route-id="@shift.Id">Atender</a>
+                            <a class="btn btn-sm btn-success" id="btnAttend" asp-action="Attend" asp-route-id="@shift.Id" asp-route-turno="@shift.CodigoTurno">Atender</a>
                         </td>
                     </tr>
                 }

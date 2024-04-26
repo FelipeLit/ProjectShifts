@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkcore" Version="8.0.4" />
     <PackageReference Include="Pomelo.EntityFrameworkcore.MySql" Version="8.0.2" />
+    <PackageReference Include="System.Speech" Version="8.0.0" />
   </ItemGroup>
 
 </Project>
