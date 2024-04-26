@@ -42,5 +42,26 @@ namespace  ProjectShifts.Controllers
 
             return RedirectToAction("Dashboard");
         }
+
+        public async Task<IActionResult> LoginAdmin(string correo, string password)
+        {
+            var user = await _context.Administrador.FirstOrDefaultAsync(u=>u.Correo == correo);
+            if (user != null)
+            {
+                if (user.Contrasena == password)
+                {
+                    HttpContext.Session.SetString("User", user.Nombre);
+                    HttpContext.Session.SetInt32("UserId", user.Id);
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+                TempData["errorMessage"] = "Correo electrónico o contraseña incorrectos";
+                return RedirectToAction("Index", "Admin");
+            }
+            else{
+                TempData["errorMessage"] = "Correo electrónico o contraseña incorrectos";
+                return RedirectToAction("Index", "Admin");
+            }
+
+        }
     }
 }
