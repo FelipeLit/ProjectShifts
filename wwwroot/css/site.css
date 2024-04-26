@@ -68,11 +68,10 @@
 
 .item{
   display: flex;
-  padding: 0px 10px;
   justify-content: center;
   border: 2px solid #000;
   border-radius: 20px;
-  width: 150px;
+  width: 120px;
   
   h2 {
     line-height: 1;
@@ -221,9 +220,19 @@
   background-size: cover;
 }
 
+.bodyC{
+  background-image: url(https://cdn.pixabay.com/photo/2021/02/03/23/09/hallway-5979689_1280.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .h1La {
   font-size: 80px;
   color: #fff;
+}
+.h2T{
+  font-size: 40px;
+  color: aqua;
 }
 
 .btnLa2 {
@@ -254,5 +263,59 @@
   box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
-/* link imagen para fondo general: https://i.pinimg.com/736x/b0/5a/ef/b05aefde6fa8ab101da73492138959ed.jpg */
-  
+
+  /* BOTON DE TURNO */
+
+  .buttonT {
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 2rem 2rem;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    border-radius: 500px;
+    overflow: hidden;
+    background: #00e1ff;
+    color: rgb(0, 0, 255);
+    width: 200px; /* Ancho fijo para todos los botones */
+    text-align: center; /* Centrar el texto */
+}
+
+.buttonT span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+}
+
+.buttonT:hover span {
+    color: rgb(255, 255, 255);
+}
+
+.buttonT::before,
+.buttonT::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.buttonT::before {
+    content: "";
+    background: #ffffff;
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.buttonT:hover::before {
+    transform: translate3d(100%, 0, 0);
+}
