@@ -1,62 +1,32 @@
 @{
-    ViewData["title"]= "Seleccione turno";
-}
-@* <div class="container">
-    <div class="row">
-
-        <div class="col-md-6">
-            <form action="">
-                    <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="ME" asp-route-id="1">Turno medicamento</a>
-                
-            </form>
-        </div>
-
-        <div class="col-md-6">
-             <form action="">
-                <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="CM" asp-route-id="2">Turno cita medica</a>
-            </form>
-        </div>
-    </div>
-
-       <div class="row">
-
-        <div class="col-md-6">
-            <form action="">
-                <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="CG" asp-route-id="3">Turno consulta general</a>
-            </form>
-        </div>
-
-        <div class="col-md-6">
-             <form action="">
-                <a class="btn btn-primary" asp-action="Generar" asp-controller="Users" asp-route-turno="PF" asp-route-id="4">Turno pago facturas</a>
-            </form>
-        </div>
-    </div>
-</div> *@
-
-@{
     ViewData["title"] = "Seleccione turno";
 }
+<div class="content-center">
+    <header class="header1 d-flex justify-content-center">
+        <h1 class="text-light h1L">𝓛𝓪 𝓜𝓲𝓼𝓮𝓻𝓲𝓬𝓸𝓻𝓭𝓲𝓪</h1>
+    </header>
 
-<header class="header1 d-flex justify-content-center">
-    <h1 class="text-light h1L">𝓛𝓪 𝓜𝓲𝓼𝓮𝓻𝓲𝓬𝓸𝓻𝓭𝓲𝓪</h1>
-</header>
-<body class="bodyC">
-    <h1 class="text-light h2T d-flex justify-content-center mt-5">Seleccione su tipo de turno</h1>
-    <div class="d-flex flex-column align-items-center mt-5">
-        <div class="d-grid gap-2">
-            <form action="">
-                <a class="buttonT mt-2" asp-action="Generar" asp-controller="Users" asp-route-turno="CM" asp-route-id="2"><span>Cita medica</span></a>
-            </form>
-            <form action="">
-                <a class="buttonT mt-4" asp-action="Generar" asp-controller="Users" asp-route-turno="ME" asp-route-id="1"><span>Medicamentos</span></a>
-            </form>
-            <form action="">
-                <a class="buttonT mt-4" asp-action="Generar" asp-controller="Users" asp-route-turno="PF" asp-route-id="4"><span>Pagos</span></a>
-            </form>
-            <form action="">
-                <a class="buttonT mt-4" asp-action="Generar" asp-controller="Users" asp-route-turno="CG" asp-route-id="3"><span>Información</span></a>
-            </form>
+    <body class="bodyC">
+        <h1 class="text-light h2T d-flex justify-content-center mt-5">Seleccione su tipo de turno</h1>
+        <div class="d-flex flex-column align-items-center mt-5">
+            <div class="d-grid gap-2">
+                <form action="">
+                    <a class="buttonT mt-2" asp-action="Generar" asp-controller="Users" asp-route-turno="CM"
+                        asp-route-id="2"><span>Cita medica</span></a>
+                </form>
+                <form action="">
+                    <a class="buttonT mt-4" asp-action="Generar" asp-controller="Users" asp-route-turno="ME"
+                        asp-route-id="1"><span>Medicamentos</span></a>
+                </form>
+                <form action="">
+                    <a class="buttonT mt-4" asp-action="Generar" asp-controller="Users" asp-route-turno="PF"
+                        asp-route-id="4"><span>Pagos</span></a>
+                </form>
+                <form action="">
+                    <a class="buttonT mt-4" asp-action="Generar" asp-controller="Users" asp-route-turno="CG"
+                        asp-route-id="3"><span>Información</span></a>
+                </form>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
+</div>
