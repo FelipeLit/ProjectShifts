@@ -29,6 +29,7 @@
   align-items: center;
   height: 100%;
   border-radius: 10px;
+  padding: 40px;
 }
 
 .shift-titles {
@@ -47,6 +48,7 @@
 }
 
 .info-shift {
+  color: #0026ff;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -62,7 +64,8 @@
 .item {
   display: flex;
   justify-content: center;
-  border: 2px solid #000;
+  border: 2px solid #00ccff;
+  box-shadow: 2px 2px 2px #0026ff, -2px -2px 2px #00ccff;
   border-radius: 20px;
   padding: 5px 0px;
   width: 140px;
@@ -230,8 +233,14 @@
   background-image: url(https://cdn.pixabay.com/photo/2014/12/10/20/56/medical-563427_1280.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-
 }
+
+.bodyA{
+  background-image: url(https://cdn.pixabay.com/photo/2024/01/29/20/04/mountains-8540738_1280.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 .h1La {
   font-size: 80px;
@@ -336,28 +345,28 @@
 /* BOTON TURNO */
 
 .buttonTurn {
-  align-items: center;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+ text-align: center;
+  background-image: linear-gradient(144deg,#ffffff, #00ccff 50%,#ffffff);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #FFFFFF;
   display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 28px;
   justify-content: center;
   line-height: 1em;
   max-width: 100%;
   min-width: 140px;
-  padding: 3px;
+  padding: 14px;
   text-decoration: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
-  transition: all .3s;
+  transition: all .2s;
  }
  
  .buttonTurn:active,
@@ -366,9 +375,9 @@
  }
  
  .buttonTurn span {
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
+  background-color: rgb(32, 136, 255);
+  padding: 34px 24px;
+  border-radius: 14px;
   width: 100%;
   height: 100%;
   transition: 300ms;
@@ -379,5 +388,17 @@
  }
  
  .buttonTurn:active {
-  transform: scale(0.9);
+  transform: scale(0.5);
  }
+
+/* Carta Atención */
+
+ .cardInfo {
+  width: 928px;
+  height: auto;
+  border-radius: 30px;
+  background: transparent;
+  box-shadow: 4px 4px 30px #00ccff, -4px -4px 30px #0026ff;
+  overflow: hidden;
+  
+}
