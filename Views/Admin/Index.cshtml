@@ -3,17 +3,27 @@
         <h1 class="mt-5 h1L">𝓛𝓪 𝓜𝓲𝓼𝓮𝓻𝓲𝓬𝓸𝓻𝓭𝓲𝓪</h1>
         <div class="CardLog d-flex flex-column mt-5 align-items-center">
             <h3 class="form-login mt-5">Administrador</h3>
-            <form asp-controller="" asp-action="Login" class="d-flex flex-column align-items-center">
+            <form asp-controller="Admin" asp-action="LoginAdmin" method="post" class="d-flex flex-column align-items-center">
                 <div class="input-box">
-                    <input class="mt-2" type="text" id="email" name="Email" placeholder="Correo" />
+                    <input class="mt-2" type="text" id="email" name="correo" placeholder="Correo" />
                 </div>
                 <div class="input-box">
-                    <input class="mt-2" type="password" id="password" name="Password" placeholder="Contraseña" />
+                    <input class="mt-2" type="password" id="password" name="password" placeholder="Contraseña" />
                 </div>
                 <div>
                     <button class="btnL mt-4" type="submit">Ingresar</button>
                 </div>
             </form>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @if(TempData["errorMessage"] != null)
+                {
+                <div class="alert alert-danger mt-3">
+                    <p class="d-flex justify-content-center align-items-center"> @TempData["errorMessage"]</p>
+                </div>
+                }
+            </div>
         </div>
         <div><br><br>
             <a class="btnLa2 mt-3" asp-action="Index" asp-controller="Users">Volver</a>
