@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectShifts.Data;
+using System.Threading.Tasks;
+using System.Speech.Synthesis;
 
-namespace  ProjectShifts.Controllers
+namespace ProjectShifts.Controllers
 {
     public class AdminController : Controller
     {
         public readonly ProjectShiftsContext _context;
 
-        public AdminController (ProjectShiftsContext context)
+        public AdminController(ProjectShiftsContext context)
         {
             _context = context;
         }
@@ -32,6 +34,8 @@ namespace  ProjectShifts.Controllers
             shift.IdAdministrador = adminId;
             await _context.SaveChangesAsync();
 
+            await VoiceShifts(shift.CodigoTurno);
+
             return RedirectToAction("Dashboard");
         }
 
@@ -47,7 +51,7 @@ namespace  ProjectShifts.Controllers
 
         public async Task<IActionResult> LoginAdmin(string correo, string password)
         {
-            var user = await _context.Administrador.FirstOrDefaultAsync(u=>u.Correo == correo);
+            var user = await _context.Administrador.FirstOrDefaultAsync(u => u.Correo == correo);
             if (user != null)
             {
                 if (user.Contrasena == password)
@@ -59,7 +63,8 @@ namespace  ProjectShifts.Controllers
                 TempData["errorMessage"] = "Correo electrónico o contraseña incorrectos";
                 return RedirectToAction("Index", "Admin");
             }
-            else{
+            else
+            {
                 TempData["errorMessage"] = "Correo electrónico o contraseña incorrectos";
                 return RedirectToAction("Index", "Admin");
             }
@@ -71,5 +76,29 @@ namespace  ProjectShifts.Controllers
 
             return RedirectToAction("Index", "Users");
         }
+
+        public async Task<IActionResult> VoiceShifts(string turno)
+        {
+            var turnoUsuario = await _context.Turnos.FirstOrDefaultAsync(t=>t.CodigoTurno == turno);
+            
+          // Initialize a new instance of the SpeechSynthesizer.
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output.
+            synth.SetOutputToDefaultAudioDevice();
+
+            synth.Speak(turnoUsuario.CodigoTurno);
+
+            // Speak a string asynchronously
+            var prompt = synth.SpeakAsync(turnoUsuario.CodigoTurno);
+
+            while (!prompt.IsCompleted)
+            {
+                Thread.Sleep(500);
+            }
+
+            return RedirectToAction("Dashboard");
+        }
+
     }
 }
