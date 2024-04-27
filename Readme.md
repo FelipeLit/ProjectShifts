@@ -9,7 +9,7 @@ Proyecto para el hospital "La Misericordia" con el objetivo de mejorar la eficie
 > 💡 Para poder iniciar el proyecto es necesario tener instalado [.NET](https://dotnet.microsoft.com/es-es/download)
 
 ## Ingreso usuarios
-> Para poder iniciar como usuario poner tipo documento cc y valor 1040
+> Para poder iniciar como usuario poner tipo documento cc y  value: 1040
 
 ## Ingreso admin
 >Para iniciar como admin correo: admin@admin.com password: 123
