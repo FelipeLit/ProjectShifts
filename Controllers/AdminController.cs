@@ -27,17 +27,40 @@ namespace ProjectShifts.Controllers
 
         public async Task<IActionResult> Attend(int id)
         {
-            var shift = await _context.Turnos.FindAsync(id);
+             var shift = await _context.Turnos.FindAsync(id);
             var adminId = HttpContext.Session.GetInt32("UserId");
 
-            shift.FechaAtencion = DateTime.Now;
-            shift.IdAdministrador = adminId;
-            await _context.SaveChangesAsync();
-
-            await VoiceShifts(shift.CodigoTurno);
-
-            return RedirectToAction("Dashboard");
+            if(shift.FechaAtencion == null)
+            {
+                await VoiceShifts(shift.CodigoTurno);   
+                shift.FechaAtencion = DateTime.Now;
+                shift.IdAdministrador = adminId;
+                //_context.Turnos.Add(shift);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Dashboard");
+            }
+            else
+            {
+                await VoiceShifts(shift.CodigoTurno);   
+                shift.FechaAtencion = DateTime.Now;
+                shift.IdAdministrador = adminId;
+                _context.Turnos.Update(shift);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Dashboard");
+            }
         }
+
+        public async Task<IActionResult> Absent(int id)
+        {
+            var shift = await _context.Turnos.FindAsync(id);
+            var adminId = HttpContext.Session.GetInt32("UserId");
+  
+                shift.FechaAusente = DateTime.Now;
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Dashboard");
+            
+        }
+
 
         public async Task<IActionResult> Finish(int id)
         {
