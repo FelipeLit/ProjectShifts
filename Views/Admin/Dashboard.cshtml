@@ -49,13 +49,17 @@
         <tbody>
             @foreach (var shift in Model)
             {
-                if (shift.FechaAtencion != null && shift.FechaFin == null)
+                if (shift.FechaAtencion != null && shift.FechaFin == null && shift.FechaAusente == null)
                 {
                     <tr>
                         <td>@shift.CodigoTurno</td>
                         <td>
-                            <a class="btn btn-sm btn-danger" asp-action="Finish" asp-route-id="@shift.Id" >Finalizar</a>
-                        </td>
+                            <a class="btn btn-sm btn-success" asp-action="Attend" asp-route-id="@shift.Id" >Volver a Llamar</a>
+                            
+                            <a class="btn btn-sm btn-primary" asp-action="Absent" asp-route-id="@shift.Id" >Ausente</a>
+                            
+                            <a class="btn btn-sm btn-danger" asp-action="Finish" asp-route-id="@shift.Id" >Finalizar atención</a>
+                        </td>        
                     </tr>
                 }
             }

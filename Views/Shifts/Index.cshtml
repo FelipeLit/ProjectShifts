@@ -20,7 +20,7 @@
             <div class="info-shift mt-2">
                 @foreach (var shift in Model)
                 {   
-                    if (shift.FechaAtencion != null && shift.FechaFin == null)
+                    if (shift.FechaAtencion != null && shift.FechaFin == null  && shift.FechaAusente == null)
                     {
                         <div class="shift">
                             <div class="item item-code ">
