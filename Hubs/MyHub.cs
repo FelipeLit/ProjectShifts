@@ -8,5 +8,10 @@ namespace SignalR
         {
             await Clients.All.SendAsync("ReceiveData");
         }
+
+        public async Task SendDato()
+        {
+            await Clients.All.SendAsync("ReceiveDato");
+        }
     }
 }

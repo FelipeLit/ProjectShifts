@@ -2,16 +2,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectShifts.Data;
 using ProjectShifts.Models;
+using Microsoft.AspNetCore.SignalR;
+using SignalR;
+using Port.Models;
+
 
 namespace  ProjectShifts.Controllers
 {
     public class UsersController : Controller
     {
         public readonly ProjectShiftsContext _context;
-
-        public UsersController (ProjectShiftsContext context)
+        private readonly IHubContext<MiHub> _hubContext;
+        public UsersController (ProjectShiftsContext context, IHubContext<MiHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         public IActionResult Index()
@@ -80,6 +85,7 @@ namespace  ProjectShifts.Controllers
     
                 _context.Turnos.Add(saveTurno);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("SendDato");
                 return RedirectToAction("Index", "Users");
             }
             else

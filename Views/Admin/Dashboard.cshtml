@@ -1,68 +1,84 @@
 @{
-    ViewBag.Title = "Dashboard Admin";
+  ViewBag.Title = "Dashboard Admin";
 }
 
 <div class="menu">
-    <a class="btn btn-danger" asp-action="SignOut">Cerrar Sesión</a>
-    <a class="btn btn-dark" target="_blank" asp-controller="Shifts" asp-action="Index">Vista de la Pantalla</a>
+  <a class="btn btn-danger" asp-action="SignOut">Cerrar Sesión</a>
+  <a class="btn btn-dark" target="_blank" asp-controller="Shifts" asp-action="Index">Vista de la Pantalla</a>
 </div>
 
 <div class="content-center">
-    <div class="title">
-        <h1>Turnos en Cola</h1>
-    </div>
+  <div class="title">
+    <h1>Turnos en Cola</h1>
+  </div>
 
-    <table class="table table-striped container text-center">
-        <thead>
-            <tr>
-                <th>Turno</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var shift in Model)
-            {
-                if (shift.FechaAtencion == null)
-                {
-                    <tr>
-                        <td>@shift.CodigoTurno</td>
-                        <td>
-                            <a class="btn btn-sm btn-success" id="btnAttend" asp-action="Attend" asp-route-id="@shift.Id" asp-route-turno="@shift.CodigoTurno">Atender</a>
-                        </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
+  <table class="table table-striped container text-center">
+    <thead>
+      <tr>
+        <th>Turno</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var shift in Model)
+      {
+        if (shift.FechaAtencion == null)
+        {
+          <tr>
+            <td>@shift.CodigoTurno</td>
+            <td>
+              <a class="btn btn-sm btn-success" id="btnAttend" asp-action="Attend" asp-route-id="@shift.Id"
+                asp-route-turno="@shift.CodigoTurno">Atender</a>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
 
-    <div class="title mt-5">
-        <h1>Turnos Atendidos</h1>
-    </div>
+  <div class="title mt-5">
+    <h1>Turnos Atendidos</h1>
+  </div>
 
-    <table class="table table-striped container text-center">
-        <thead>
-            <tr>
-                <th>Turno</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var shift in Model)
-            {
-                if (shift.FechaAtencion != null && shift.FechaFin == null && shift.FechaAusente == null)
-                {
-                    <tr>
-                        <td>@shift.CodigoTurno</td>
-                        <td>
-                            <a class="btn btn-sm btn-success" asp-action="Attend" asp-route-id="@shift.Id" >Volver a Llamar</a>
-                            
-                            <a class="btn btn-sm btn-primary" asp-action="Absent" asp-route-id="@shift.Id" >Ausente</a>
-                            
-                            <a class="btn btn-sm btn-danger" asp-action="Finish" asp-route-id="@shift.Id" >Finalizar atención</a>
-                        </td>        
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
+  <table class="table table-striped container text-center">
+    <thead>
+      <tr>
+        <th>Turno</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var shift in Model)
+      {
+        if (shift.FechaAtencion != null && shift.FechaFin == null && shift.FechaAusente == null)
+        {
+          <tr>
+            <td>@shift.CodigoTurno</td>
+            <td>
+              <a class="btn btn-sm btn-success" asp-action="Attend" asp-route-id="@shift.Id">Volver a Llamar</a>
+
+              <a class="btn btn-sm btn-primary" asp-action="Absent" asp-route-id="@shift.Id">Ausente</a>
+
+              <a class="btn btn-sm btn-danger" asp-action="Finish" asp-route-id="@shift.Id">Finalizar atención</a>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+<script>
+  const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/miHub") // Reemplaza "/myHub" con la URL de tu hub de SignalR
+    .build();
+
+  connection.start().catch(error => {
+    console.error(error.message);
+  });
+
+  connection.on("SendDato", function () {
+    // Manejar los datos recibidos, por ejemplo, actualizar la interfaz de usuario
+    window.location.reload()
+  });
+</script>
