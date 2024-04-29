@@ -1,44 +1,63 @@
 @{
-    ViewBag.Title = "Turnos";
+  ViewBag.Title = "Turnos";
 }
+
 <body class="bodyA">
-<div class="content-center mt-2">
+  <div class="content-center mt-2">
     <h1 class="hTurn">Atención</h1>
-    
+
     <div class="cardInfo mt-5">
-        <div class="content-shift ">
-            <div class="shift-titles mt-1">
-                <div class="title">
-                    <h1>Turno</h1>
-                </div>
+      <div class="content-shift ">
+        <div class="shift-titles mt-1">
+          <div class="title">
+            <h1>Turno</h1>
+          </div>
 
-                <div class="title">
-                    <h1>Módulo</h1>
-                </div>
-            </div>
-
-            <div class="info-shift mt-2">
-                @foreach (var shift in Model)
-                {   
-                    if (shift.FechaAtencion != null && shift.FechaFin == null  && shift.FechaAusente == null)
-                    {
-                        <div class="shift">
-                            <div class="item item-code ">
-                                <h2>@shift.CodigoTurno</h2>
-                            </div>
-
-                            <div class="item item-module">
-                                <h2>@{
-                                        int numRandom = new Random().Next(1, 8);
-                                    }
-                                    @numRandom
-                                </h2>
-                            </div>
-                        </div>
-                    }
-                }
-            </div>
+          <div class="title">
+            <h1>Módulo</h1>
+          </div>
         </div>
+
+        <div class="info-shift mt-2">
+          @foreach (var shift in Model)
+          {
+            if (shift.FechaAtencion != null && shift.FechaFin == null && shift.FechaAusente == null)
+            {
+              <div class="shift">
+                <div class="item item-code ">
+                  <h2>@shift.CodigoTurno</h2>
+                </div>
+
+                <div class="item item-module">
+                  <h2>@{
+                      int numRandom = new Random().Next(1, 8);
+                    }
+                    @numRandom
+                  </h2>
+                </div>
+              </div>
+            }
+          }
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 </body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+<script>
+  const connection = new signalR.HubConnectionBuilder()
+    .withUrl("/miHub") // Reemplaza "/myHub" con la URL de tu hub de SignalR
+    .build();
+
+  connection.start().catch(error => {
+    console.error(error.message);
+  });
+
+  connection.on("SendData", function () {
+    // Manejar los datos recibidos, por ejemplo, actualizar la interfaz de usuario
+    window.location.reload()
+  });
+</script>

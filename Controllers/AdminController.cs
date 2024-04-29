@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjectShifts.Data;
+using Port.Models;
+using Microsoft.AspNetCore.SignalR;
+using SignalR;
+
 using System.Threading.Tasks;
 using System.Speech.Synthesis;
 
@@ -10,10 +14,16 @@ namespace ProjectShifts.Controllers
     {
         public readonly ProjectShiftsContext _context;
 
-        public AdminController(ProjectShiftsContext context)
+         private readonly IHubContext<MiHub> _hubContext;
+
+        public AdminController(ProjectShiftsContext context, IHubContext<MiHub> hubContext)
+
         {
             _context = context;
+            _hubContext = hubContext;
         }
+
+       
 
         public IActionResult Index()
         {
@@ -32,16 +42,17 @@ namespace ProjectShifts.Controllers
 
             if(shift.FechaAtencion == null)
             {
-                await VoiceShifts(shift.CodigoTurno);   
+                //await VoiceShifts(shift.CodigoTurno);   
                 shift.FechaAtencion = DateTime.Now;
                 shift.IdAdministrador = adminId;
                 //_context.Turnos.Add(shift);
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("SendData");
                 return RedirectToAction("Dashboard");
             }
             else
             {
-                await VoiceShifts(shift.CodigoTurno);   
+                //await VoiceShifts(shift.CodigoTurno);   
                 shift.FechaAtencion = DateTime.Now;
                 shift.IdAdministrador = adminId;
                 _context.Turnos.Update(shift);
@@ -57,6 +68,7 @@ namespace ProjectShifts.Controllers
   
                 shift.FechaAusente = DateTime.Now;
                 await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("SendData");
                 return RedirectToAction("Dashboard");
             
         }
@@ -68,7 +80,7 @@ namespace ProjectShifts.Controllers
 
             shift.FechaFin = DateTime.Now;
             await _context.SaveChangesAsync();
-
+            await _hubContext.Clients.All.SendAsync("SendData");
             return RedirectToAction("Dashboard");
         }
 
@@ -100,28 +112,28 @@ namespace ProjectShifts.Controllers
             return RedirectToAction("Index", "Users");
         }
 
-        public async Task<IActionResult> VoiceShifts(string turno)
-        {
-            var turnoUsuario = await _context.Turnos.FirstOrDefaultAsync(t=>t.CodigoTurno == turno);
+        // public async Task<IActionResult> VoiceShifts(string turno)
+        // {
+        //     var turnoUsuario = await _context.Turnos.FirstOrDefaultAsync(t=>t.CodigoTurno == turno);
             
-          // Initialize a new instance of the SpeechSynthesizer.
-            SpeechSynthesizer synth = new SpeechSynthesizer();
+        //   // Initialize a new instance of the SpeechSynthesizer.
+        //     SpeechSynthesizer synth = new SpeechSynthesizer();
 
-            // Configure the audio output.
-            synth.SetOutputToDefaultAudioDevice();
+        //     // Configure the audio output.
+        //     synth.SetOutputToDefaultAudioDevice();
 
-            synth.Speak(turnoUsuario.CodigoTurno);
+        //     synth.Speak(turnoUsuario.CodigoTurno);
 
-            // Speak a string asynchronously
-            var prompt = synth.SpeakAsync(turnoUsuario.CodigoTurno);
+        //     // Speak a string asynchronously
+        //     var prompt = synth.SpeakAsync(turnoUsuario.CodigoTurno);
 
-            while (!prompt.IsCompleted)
-            {
-                Thread.Sleep(500);
-            }
+        //     while (!prompt.IsCompleted)
+        //     {
+        //         Thread.Sleep(500);
+        //     }
 
-            return RedirectToAction("Dashboard");
-        }
+        //     return RedirectToAction("Dashboard");
+        // }
 
     }
 }

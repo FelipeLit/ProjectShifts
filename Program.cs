@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectShifts.Data;
+using SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSignalR();
 builder.Services.AddDbContext<ProjectShiftsContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("mySqlConnection"),
@@ -42,5 +43,16 @@ app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Users}/{action=Index}");
+
+
+app.UseEndpoints(endpoints =>
+{
+  
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+        endpoints.MapHub<MiHub>("/miHub"); // Asigna una ruta al Hub
+});
+
 
 app.Run();
